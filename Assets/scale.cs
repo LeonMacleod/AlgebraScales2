@@ -10,31 +10,6 @@ public class scale : MonoBehaviour
     public TextMeshPro massText;
 
 
-
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!(attachedBodies.Contains(collision.gameObject)))
-        {
-            if(collision.gameObject.tag == "CanScale")
-            {
-                attachedBodies.Add(collision.gameObject);
-            }
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (attachedBodies.Contains(collision.gameObject))
-        {
-            if(collision.gameObject.tag == "CanScale")
-            {
-                attachedBodies.Remove(collision.gameObject);
-            }
-        }
-    }*/
-
-
     public float getMassText()
     {
         float mass = 0;
@@ -59,3 +34,6 @@ public class scale : MonoBehaviour
         massText.text = getMassText().ToString();
     }
 }
+
+
+

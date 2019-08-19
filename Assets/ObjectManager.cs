@@ -18,7 +18,6 @@ public class ObjectManager : MonoBehaviour
 
 
 
-
         //dealing with the first scale or object on top of it or object on top of the object on top of it.
 
 
@@ -66,12 +65,14 @@ public class ObjectManager : MonoBehaviour
 
 
 
+        //dealing with the second scale or object on top of it or object on top of the object on top of it.
 
-        
 
+       
 
         if (collision.gameObject.name == "scale2")
         {
+
             if (this.gameObject.transform.Find("state").tag == "notadded")
             {
                 Debug.Log(this.gameObject.name + " has collided with scale2");
@@ -115,43 +116,98 @@ public class ObjectManager : MonoBehaviour
 
     }
 
-       
+
+    private void OnCollisionExit(Collision collision)
+    {
+
+
+        //dealing with the first scale or object on top of it or object on top of the object on top of it.
+
+        if (collision.gameObject.name == "scale1")
+        {
+            if (this.gameObject.transform.Find("state").tag == "added")
+            {
+                Debug.Log(this.gameObject.name + " has left scale1");
+                this.gameObject.transform.Find("id").tag = "Untagged";
+                this.gameObject.transform.Find("state").tag = "notadded";
+                scale1.GetComponent<scale>().attachedBodies.Remove(this.gameObject);
+            }
 
 
 
-        //dealing with the second scale or object on top of it or object on top of the object on top of it.
-
-        /*
-        
-        if (collision.gameObject.name == "scale2" || collision.gameObject.transform.Find("id").tag == "scale2")
+        }
+        else
         {
 
-            if (this.gameObject.transform.Find("state").tag == "notadded")
+            if (collision.gameObject.transform.Find("id") != null)
             {
-                Debug.Log(this.gameObject.name + " has collided with scale2");
-                this.gameObject.transform.Find("id").tag = "scale2";
-                this.gameObject.transform.Find("state").tag = "added";
-                scale2.GetComponent<scale>().attachedBodies.Add(this.gameObject);
+                if (collision.gameObject.transform.Find("id").tag == "scale1")
+                {
+
+                    if (this.gameObject.transform.Find("state").tag == "added")
+                    {
+                        Debug.Log(this.gameObject.name + " has left  scale1");
+                        this.gameObject.transform.Find("id").tag = "Untagged";
+                        this.gameObject.transform.Find("state").tag = "notadded";
+                        scale1.GetComponent<scale>().attachedBodies.Remove(this.gameObject);
+
+                    }
+
+
+
+                }
             }
 
 
 
 
+        }
+
+
+        //dealing with the second scale or object on top of it or object on top of the object on top of it.
+
+        if (collision.gameObject.name == "scale2")
+        {
+            if (this.gameObject.transform.Find("state").tag == "added")
+            {
+                Debug.Log(this.gameObject.name + " has left scale2");
+                this.gameObject.transform.Find("id").tag = "Untagged";
+                this.gameObject.transform.Find("state").tag = "notadded";
+                scale2.GetComponent<scale>().attachedBodies.Remove(this.gameObject);
+            }
+
+
 
         }
-        
-        */
+        else
+        {
 
-    
+            if (collision.gameObject.transform.Find("id") != null)
+            {
+                if (collision.gameObject.transform.Find("id").tag == "scale2")
+                {
+
+                    if (this.gameObject.transform.Find("state").tag == "added")
+                    {
+                        Debug.Log(this.gameObject.name + " has left  scale2");
+                        this.gameObject.transform.Find("id").tag = "Untagged";
+                        this.gameObject.transform.Find("state").tag = "notadded";
+                        scale2.GetComponent<scale>().attachedBodies.Remove(this.gameObject);
+
+                    }
 
 
-    private void OnCollisionExit(Collision collision)
-    {
-      
+
+                }
+            }
+
+
+
+
+        }
+
 
     }
-
-
 
 
     // Start is called before the first frame update
