@@ -10,6 +10,10 @@ TagManager:
   - scale2
   - added
   - notadded
+  - true
+  - false
+  - RHand
+  - LHand
   layers:
   - Default
   - TransparentFX
@@ -21,7 +25,7 @@ TagManager:
   - 
   - 
   - Teleportable
-  - 
+  - Pickupable
   - 
   - 
   - 

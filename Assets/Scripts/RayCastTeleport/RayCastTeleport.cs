@@ -46,7 +46,7 @@ public class RayCastTeleport : MonoBehaviour
 
 
             // On right trigger press the player teleports to the raycast hit location.
-            if (Input.GetButtonDown("RightTriggerPress"))
+            if (Input.GetButtonDown("GripButtonRight"))
             {
                 player.transform.position = hit.point;
             }
