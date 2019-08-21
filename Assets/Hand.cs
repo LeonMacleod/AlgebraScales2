@@ -5,6 +5,12 @@ using UnityEngine;
 public class Hand : MonoBehaviour
 {
 
+
+
+
+
+
+
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -47,6 +53,12 @@ public class Hand : MonoBehaviour
     void Update()
     {
 
+
+        
+
+
+
+
         // DROP OBJECTS in HANDS
         if (Input.GetButton("LeftTriggerPress"))
         {
@@ -58,7 +70,7 @@ public class Hand : MonoBehaviour
 
                 // Destroying the fixedjoint on objects connected to the left hand.
                 Destroy(go.GetComponentInParent<FixedJoint>());
-
+                go.GetComponentInParent<Rigidbody>().AddForce(GameObject.Find("LHand").GetComponent<HandVelocity>().velocity * 10f, ForceMode.Impulse);
             }
 
         }
@@ -72,8 +84,12 @@ public class Hand : MonoBehaviour
             foreach (GameObject go in heldObjects)
             {
 
+
+                
+
                 // Destroying the fixedjoint on objects connected to the right hand.
                 Destroy(go.GetComponentInParent<FixedJoint>());
+                go.GetComponentInParent<Rigidbody>().AddForce(GameObject.Find("RHand").GetComponent<HandVelocity>().velocity * 10f, ForceMode.Impulse);
 
             }
 

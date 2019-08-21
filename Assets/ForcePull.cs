@@ -38,7 +38,7 @@ public class ForcePull : MonoBehaviour
             // If the object in question is already being held it will not experience a force.
             if(Vector3.Distance(hit.transform.gameObject.transform.position, this.transform.position) > 1f && hit.transform.gameObject.transform.Find("isHeld").tag == "false")
             {
-                hit.transform.gameObject.transform.position = Vector3.MoveTowards(hit.transform.gameObject.transform.position, this.transform.position, 0.010f);
+                hit.transform.gameObject.transform.position = Vector3.MoveTowards(hit.transform.gameObject.transform.position, this.transform.position, 0.10f);
             }
             
         }
